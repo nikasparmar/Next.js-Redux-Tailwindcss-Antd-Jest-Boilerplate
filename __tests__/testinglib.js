@@ -2,12 +2,23 @@
 
 import React from 'react';
 import { render } from '@testing-library/react';
+import configureStore from 'redux-mock-store';
+import { Provider } from 'react-redux';
+const mockStore = configureStore([]);
 import Index from '../pages/index';
+import { initialState } from '../redux/reducer/homePageReducer';
+
 
 test('renders deploy link', () => {
-  const { getByText } = render(<Index />);
-  const linkElement = getByText(
-    /Instantly deploy your Next\.js site to a public URL with ZEIT Now\./
+  let store, tree;
+  store = mockStore({ "homePage": initialState });
+  const { getByText } = render(
+    <Provider store={store}>
+      <Index />
+    </Provider>
   );
-  expect(linkElement).toBeInTheDocument();
+  const title = getByText(
+    "Hello Next.js"
+  );
+  expect(title).toBeInTheDocument();
 });

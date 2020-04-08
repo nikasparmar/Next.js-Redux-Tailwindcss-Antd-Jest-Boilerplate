@@ -1,6 +1,6 @@
 import { HOME_PAGE_TITLE } from '../actions/homePageAction';
 
-const initialState = {
+export const initialState = {
   title: 'Hello Next.js'
 };
 
