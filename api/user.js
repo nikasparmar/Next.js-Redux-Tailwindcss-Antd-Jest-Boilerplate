@@ -1,4 +1,3 @@
-import fetch from 'isomorphic-unfetch';
 import config from '../config/index';
 
 export const getuser = async (requestData) => {
